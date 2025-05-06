@@ -30,9 +30,9 @@
 
         <!-- User Info Modal -->
         <div id="userModal" class=" hidden fixed inset-0 bg-gray-900 bg-opacity-50  justify-center items-center">
-            <div class="bg-white p-6 rounded-xl shadow-lg w-96 text-center border border-gray-300">
+            <div class="bg-white p-6 rounded-xl shadow-lg w-[50%] text-center border border-gray-300">
                 <h2 class="text-2xl font-bold text-gray-800 mb-4">User Details</h2>
-                <div class="space-y-3 h-[400px]">
+                <div class="space-y-3 ">
                     <div class="flex justify-between border-b p-0">
                         <strong class="text-gray-700">Name:</strong> <span id="modalUserName" class="text-gray-900"></span>
                     </div>
@@ -47,17 +47,18 @@
                     <div id="userPosts" class="mt-2 text-left text-sm hidden">
                         <h3 class="text-sm font-semibold text-gray-700">User Posts</h3>
                         <ul id="postsList" class="mt-0 space-y-2 px-0 text-gray-900"></ul>
-                        <button onclick="closePosts()" class="mt-3 px-2 py-2 bg-gray-500 text-black rounded-lg hover:bg-gray-600 focus:ring-2 focus:ring-gray-400 transition">
-                            Close Posts
-                        </button>
+                       
                     </div>
                 </div>
 
                 <div class="mt-2 flex justify-evenly gap-2">
-                    <button onclick="closeModal()" class="px-5 py-2 bg-gray-400 text-black rounded-lg hover:bg-gray-600 focus:ring-2 focus:ring-gray-300 transition">
-                        Close
+                    <button id="closePostsBtn" onclick="closePosts()" class="px-2 py-2 bg-gray-500 text-black rounded-lg hover:bg-gray-600 focus:ring-2 focus:ring-gray-400 transition">
+                        Close Posts
                     </button>
-                    <button id="viewPostsBtn" class="px-5 py-2 bg-gray-400 text-black rounded-lg hover:bg-gray-600 focus:ring-2 focus:ring-gray-300 transition">
+                    <button id="closeModalBtn" onclick="closeModal()" class="px-5 py-2 bg-gray-400 text-black rounded-lg hover:bg-gray-600 focus:ring-2 focus:ring-gray-300 transition ">
+                        Close Modal
+                    </button>
+                    <button id="viewPostsBtn" onclick="viewPosts()" class="px-5 py-2 bg-gray-400 text-black rounded-lg hover:bg-gray-600 focus:ring-2 focus:ring-gray-300 transition">
                         View Posts
                     </button>
                 </div>
@@ -147,7 +148,7 @@
                     postsList.appendChild(listItem);
                 });
 
-                // Show posts section
+                // Show posts section 
                 document.getElementById("userPosts").classList.remove("hidden");
             } catch (error) {
                 alert(error.message);
@@ -165,7 +166,9 @@
 
         function closePosts() {
             document.getElementById("userPosts").classList.add("hidden");
+            document.getElementById("closeModalBtn").classList.remove("hidden");
         }
+    
     </script>
 </body>
 </html>
